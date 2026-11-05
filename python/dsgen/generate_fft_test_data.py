@@ -22,7 +22,7 @@ def generate_fft_test_data(test_id, num_samples):
     ifft_result = ifft(fft_result)
 
     # Compute IRFFT
-    irfft_result = irfft(rfft_result)
+    irfft_result = irfft(rfft_result, n=len(signal_data))
     
     # Create output directory if it doesn't exist
     output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../datasets/fft")
@@ -137,6 +137,9 @@ if __name__ == "__main__":
     print("=" * 60)
     generate_fft_test_data(1, 64)
     generate_fft_test_data(2, 128)
+    generate_fft_test_data(3, 100)
+    generate_fft_test_data(4, 97)
+    generate_fft_test_data(5, 1000)
     
     # Generate STFT test data
     print("\n" + "=" * 60)

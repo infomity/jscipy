@@ -2,18 +2,16 @@ package com.hissain.jscipy.signal.fft;
 
 import com.hissain.jscipy.signal.JComplex;
 import com.hissain.jscipy.signal.Windows;
-
-import org.apache.commons.math3.complex.Complex;
-import org.apache.commons.math3.transform.DftNormalization;
-import org.apache.commons.math3.transform.FastFourierTransformer;
-import org.apache.commons.math3.transform.TransformType;
+import org.jtransforms.fft.DoubleFFT_1D;
+import org.jtransforms.fft.DoubleFFT_2D;
 
 import java.util.Arrays;
 
 /**
  * A class for performing Fast Fourier Transforms (FFT) and Short-Time Fourier
  * Transforms (STFT).
- * This class uses the Apache Commons Math library for FFT calculations.
+ * This class uses the JTransforms library for efficient O(N log N) FFT calculations
+ * across arbitrary sizes (powers of 2, composite, and prime lengths).
  * <p>
  * <img src=
  * "https://raw.githubusercontent.com/hissain/jscipy/main/python/figs/fft/fft_comparison_1_light.png"
@@ -21,45 +19,10 @@ import java.util.Arrays;
  */
 public class FFT {
 
-    private final FastFourierTransformer transformer;
-
     /**
      * Constructs a new FFT object.
      */
     public FFT() {
-        this.transformer = new FastFourierTransformer(DftNormalization.STANDARD);
-    }
-
-    private JComplex[] dft(double[] input) {
-        int n = input.length;
-        JComplex[] output = new JComplex[n];
-        for (int k = 0; k < n; k++) {
-            double sumReal = 0;
-            double sumImag = 0;
-            for (int t = 0; t < n; t++) {
-                double angle = -2 * Math.PI * k * t / n;
-                sumReal += input[t] * Math.cos(angle);
-                sumImag += input[t] * Math.sin(angle);
-            }
-            output[k] = new JComplex(sumReal, sumImag);
-        }
-        return output;
-    }
-
-    private JComplex[] idft(JComplex[] input) {
-        int n = input.length;
-        JComplex[] output = new JComplex[n];
-        for (int t = 0; t < n; t++) {
-            double sumReal = 0;
-            double sumImag = 0;
-            for (int k = 0; k < n; k++) {
-                double angle = 2 * Math.PI * k * t / n;
-                sumReal += input[k].getReal() * Math.cos(angle) - input[k].getImaginary() * Math.sin(angle);
-                sumImag += input[k].getReal() * Math.sin(angle) + input[k].getImaginary() * Math.cos(angle);
-            }
-            output[t] = new JComplex(sumReal / n, sumImag / n);
-        }
-        return output;
     }
 
     /**
@@ -71,12 +34,18 @@ public class FFT {
      */
     public JComplex[] fft(double[] input) {
         int n = input.length;
-        if (Integer.bitCount(n) == 1) { // Power of 2
-            Complex[] result = transformer.transform(input, TransformType.FORWARD);
-            return toJComplex(result);
-        } else {
-            return dft(input);
+        if (n == 0) {
+            return new JComplex[0];
         }
+        DoubleFFT_1D fft = new DoubleFFT_1D(n);
+        double[] data = new double[2 * n];
+        System.arraycopy(input, 0, data, 0, n);
+        fft.realForwardFull(data);
+        JComplex[] output = new JComplex[n];
+        for (int i = 0; i < n; i++) {
+            output[i] = new JComplex(data[2 * i], data[2 * i + 1]);
+        }
+        return output;
     }
 
     /**
@@ -87,37 +56,19 @@ public class FFT {
      */
     public JComplex[] fft(JComplex[] input) {
         int n = input.length;
-        if (Integer.bitCount(n) == 1) { // Power of 2
-            Complex[] complexInput = fromJComplex(input);
-            Complex[] result = transformer.transform(complexInput, TransformType.FORWARD);
-            return toJComplex(result);
-        } else {
-            // Fallback for non-power-of-2 (using DFT for now, or could compose)
-            // Note: The internal dft method strictly takes double[], so we need a complex
-            // DFT
-            // For now, let's implement a simple complex DFT to support this case
-            return complexDft(input);
+        if (n == 0) {
+            return new JComplex[0];
         }
-    }
-
-    private JComplex[] complexDft(JComplex[] input) {
-        int n = input.length;
+        DoubleFFT_1D fft = new DoubleFFT_1D(n);
+        double[] data = new double[2 * n];
+        for (int i = 0; i < n; i++) {
+            data[2 * i] = input[i].getReal();
+            data[2 * i + 1] = input[i].getImaginary();
+        }
+        fft.complexForward(data);
         JComplex[] output = new JComplex[n];
-        for (int k = 0; k < n; k++) {
-            double sumReal = 0;
-            double sumImag = 0;
-            for (int t = 0; t < n; t++) {
-                double angle = -2 * Math.PI * k * t / n;
-                double cos = Math.cos(angle);
-                double sin = Math.sin(angle);
-                // (a+bi)(c+di) = (ac-bd) + (ad+bc)i
-                // input[t] * (cos + i*sin)
-                double a = input[t].getReal();
-                double b = input[t].getImaginary();
-                sumReal += a * cos - b * sin;
-                sumImag += a * sin + b * cos;
-            }
-            output[k] = new JComplex(sumReal, sumImag);
+        for (int i = 0; i < n; i++) {
+            output[i] = new JComplex(data[2 * i], data[2 * i + 1]);
         }
         return output;
     }
@@ -131,13 +82,21 @@ public class FFT {
      */
     public JComplex[] ifft(JComplex[] input) {
         int n = input.length;
-        if (Integer.bitCount(n) == 1) { // Power of 2
-            Complex[] complexInput = fromJComplex(input);
-            Complex[] result = transformer.transform(complexInput, TransformType.INVERSE);
-            return toJComplex(result);
-        } else {
-            return idft(input);
+        if (n == 0) {
+            return new JComplex[0];
         }
+        DoubleFFT_1D fft = new DoubleFFT_1D(n);
+        double[] data = new double[2 * n];
+        for (int i = 0; i < n; i++) {
+            data[2 * i] = input[i].getReal();
+            data[2 * i + 1] = input[i].getImaginary();
+        }
+        fft.complexInverse(data, true);
+        JComplex[] output = new JComplex[n];
+        for (int i = 0; i < n; i++) {
+            output[i] = new JComplex(data[2 * i], data[2 * i + 1]);
+        }
+        return output;
     }
 
     /**
@@ -152,25 +111,58 @@ public class FFT {
      */
     public JComplex[][] fft2(double[][] input) {
         int rows = input.length;
+        if (rows == 0) return new JComplex[0][0];
         int cols = input[0].length;
-        JComplex[][] intermediate = new JComplex[rows][cols];
+        if (cols == 0) return new JComplex[rows][0];
 
-        // 1. FFT of rows
-        for (int i = 0; i < rows; i++) {
-            intermediate[i] = fft(input[i]);
+        DoubleFFT_2D fft2d = new DoubleFFT_2D(rows, cols);
+        double[][] data = new double[rows][2 * cols];
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                data[r][2 * c] = input[r][c];
+                data[r][2 * c + 1] = 0.0;
+            }
         }
+        fft2d.complexForward(data);
 
-        // 2. Transpose
-        JComplex[][] transposed = transpose(intermediate);
-
-        // 3. FFT of columns (now rows of transposed)
-        JComplex[][] spectrumTransposed = new JComplex[cols][rows];
-        for (int i = 0; i < cols; i++) {
-            spectrumTransposed[i] = fft(transposed[i]);
+        JComplex[][] output = new JComplex[rows][cols];
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                output[r][c] = new JComplex(data[r][2 * c], data[r][2 * c + 1]);
+            }
         }
+        return output;
+    }
 
-        // 4. Transpose back
-        return transpose(spectrumTransposed);
+    /**
+     * Computes the 2D FFT of a complex-valued 2D array.
+     * 
+     * @param input The 2D complex input array [rows][cols].
+     * @return The 2D complex-valued FFT.
+     */
+    public JComplex[][] fft2(JComplex[][] input) {
+        int rows = input.length;
+        if (rows == 0) return new JComplex[0][0];
+        int cols = input[0].length;
+        if (cols == 0) return new JComplex[rows][0];
+
+        DoubleFFT_2D fft2d = new DoubleFFT_2D(rows, cols);
+        double[][] data = new double[rows][2 * cols];
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                data[r][2 * c] = input[r][c].getReal();
+                data[r][2 * c + 1] = input[r][c].getImaginary();
+            }
+        }
+        fft2d.complexForward(data);
+
+        JComplex[][] output = new JComplex[rows][cols];
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                output[r][c] = new JComplex(data[r][2 * c], data[r][2 * c + 1]);
+            }
+        }
+        return output;
     }
 
     /**
@@ -181,37 +173,27 @@ public class FFT {
      */
     public JComplex[][] ifft2(JComplex[][] input) {
         int rows = input.length;
+        if (rows == 0) return new JComplex[0][0];
         int cols = input[0].length;
-        JComplex[][] intermediate = new JComplex[rows][cols];
+        if (cols == 0) return new JComplex[rows][0];
 
-        // 1. IFFT of rows
-        for (int i = 0; i < rows; i++) {
-            intermediate[i] = ifft(input[i]);
-        }
-
-        // 2. Transpose
-        JComplex[][] transposed = transpose(intermediate);
-
-        // 3. IFFT of columns
-        JComplex[][] resultTransposed = new JComplex[cols][rows];
-        for (int i = 0; i < cols; i++) {
-            resultTransposed[i] = ifft(transposed[i]);
-        }
-
-        // 4. Transpose back
-        return transpose(resultTransposed);
-    }
-
-    private JComplex[][] transpose(JComplex[][] matrix) {
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-        JComplex[][] result = new JComplex[cols][rows];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                result[j][i] = matrix[i][j];
+        DoubleFFT_2D fft2d = new DoubleFFT_2D(rows, cols);
+        double[][] data = new double[rows][2 * cols];
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                data[r][2 * c] = input[r][c].getReal();
+                data[r][2 * c + 1] = input[r][c].getImaginary();
             }
         }
-        return result;
+        fft2d.complexInverse(data, true);
+
+        JComplex[][] output = new JComplex[rows][cols];
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                output[r][c] = new JComplex(data[r][2 * c], data[r][2 * c + 1]);
+            }
+        }
+        return output;
     }
 
     /**
@@ -223,8 +205,11 @@ public class FFT {
      *         {@link JComplex} objects.
      */
     public JComplex[] rfft(double[] input) {
-        JComplex[] fftResult = fft(input);
         int n = input.length;
+        if (n == 0) {
+            return new JComplex[0];
+        }
+        JComplex[] fftResult = fft(input);
         int resultSize = n / 2 + 1;
         return Arrays.copyOf(fftResult, resultSize);
     }
@@ -237,17 +222,26 @@ public class FFT {
      * @return The real-valued inverse FFT of the signal.
      */
     public double[] irfft(JComplex[] input, int n) {
+        if (n == 0) {
+            return new double[0];
+        }
         // Reconstruct the full complex spectrum from the RFFT output
         JComplex[] fullSpectrum = new JComplex[n];
         fullSpectrum[0] = input[0]; // DC component
 
-        for (int i = 1; i < input.length - 1; i++) {
-            fullSpectrum[i] = input[i];
-            fullSpectrum[n - i] = input[i].conjugate();
-        }
-
-        if (n % 2 == 0) { // Even length input
-            fullSpectrum[n / 2] = input[n / 2];
+        if (n % 2 == 0) {
+            for (int i = 1; i < n / 2; i++) {
+                fullSpectrum[i] = input[i];
+                fullSpectrum[n - i] = input[i].conjugate();
+            }
+            if (n > 1) {
+                fullSpectrum[n / 2] = input[n / 2];
+            }
+        } else {
+            for (int i = 1; i <= n / 2; i++) {
+                fullSpectrum[i] = input[i];
+                fullSpectrum[n - i] = input[i].conjugate();
+            }
         }
 
         JComplex[] ifftResult = ifft(fullSpectrum);
@@ -478,22 +472,6 @@ public class FFT {
             }
         }
 
-        return output;
-    }
-
-    private JComplex[] toJComplex(Complex[] input) {
-        JComplex[] output = new JComplex[input.length];
-        for (int i = 0; i < input.length; i++) {
-            output[i] = new JComplex(input[i].getReal(), input[i].getImaginary());
-        }
-        return output;
-    }
-
-    private Complex[] fromJComplex(JComplex[] input) {
-        Complex[] output = new Complex[input.length];
-        for (int i = 0; i < input.length; i++) {
-            output[i] = new Complex(input[i].getReal(), input[i].getImaginary());
-        }
         return output;
     }
 }
