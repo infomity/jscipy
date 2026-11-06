@@ -127,7 +127,7 @@ jSciPy is published to **Maven Central** for stable releases. Simply add the dep
 
 ```gradle
 dependencies {
-    implementation 'io.github.hissain:jscipy:3.3.0'
+    implementation 'io.github.infomity:jscipy:3.3.0'
 }
 ```
 

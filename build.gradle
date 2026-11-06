@@ -8,7 +8,7 @@ plugins {
 }
 
 
-group = 'io.github.hissain'
+group = 'io.github.infomity'
 version = '3.3.0'
 
 application {
