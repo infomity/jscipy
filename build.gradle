@@ -9,7 +9,7 @@ plugins {
 
 
 group = 'io.github.hissain'
-version = '3.2.0'
+version = '3.3.0'
 
 application {
     mainClassName = 'com.hissain.jscipy.Main'
@@ -107,7 +107,7 @@ publishing {
             pom {
                 name = 'jscipy'
                 description = 'A pure Java implementation of scientific computing library similar to SciPy.'
-                url = 'https://github.com/hissain/jscipy'
+                url = 'https://github.com/infomity/jscipy'
                 licenses {
                     license {
                         name = 'The MIT License'
@@ -122,9 +122,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = 'scm:git:git://github.com/hissain/jscipy.git'
-                    developerConnection = 'scm:git:ssh://github.com:hissain/jscipy.git'
-                    url = 'https://github.com/hissain/jscipy'
+                    connection = 'scm:git:git://github.com/infomity/jscipy.git'
+                    developerConnection = 'scm:git:ssh://github.com:infomity/jscipy.git'
+                    url = 'https://github.com/infomity/jscipy'
                 }
             }
         }
