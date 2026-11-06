@@ -9,7 +9,7 @@ plugins {
 
 
 group = 'io.github.infomity'
-version = '3.4.0'
+version = '3.3.1'
 
 application {
     mainClassName = 'com.hissain.jscipy.Main'
