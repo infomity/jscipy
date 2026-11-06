@@ -127,7 +127,7 @@ jSciPy is published to **Maven Central** for stable releases. Simply add the dep
 
 ```gradle
 dependencies {
-    implementation 'io.github.infomity:jscipy:3.3.0'
+    implementation 'io.github.infomity:jscipy:3.4.0'
 }
 ```
 
@@ -144,7 +144,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.infomity:jscipy:3.3.0'  // Note: com.github for JitPack
+    implementation 'com.github.infomity:jscipy:3.4.0'  // Note: com.github for JitPack
 }
 ```
 
@@ -471,6 +471,7 @@ All standard IIR filters (Butterworth, Chebyshev I/II, Elliptic, Bessel) are sup
 
 ```java
 import com.hissain.jscipy.Signal;
+import com.hissain.jscipy.signal.filter.LFilter;
 
 public class FilterExample {
     public static void main(String[] args) {
@@ -501,6 +502,18 @@ public class FilterExample {
         // If you have SOS coefficients (e.g., from Python/SciPy)
         double[][] sos = { /* ... 6 coefficients per section ... */ };
         double[] sosFiltered = Signal.sosfilt(signal, sos);
+
+        // 6. General (b, a) filtering, like scipy.signal.lfilter(b, a, x)
+        // Apply FIR taps designed with firwin (a = {1.0}) ...
+        double[] taps = Signal.firwin(201, new double[] {fc - 5.0, fc + 5.0}, fs, false);
+        double[] firFiltered = Signal.lfilter(taps, new double[] {1.0}, signal);
+        // ... or any IIR (b, a) pair, optionally with initial conditions
+        double[] b = {0.2, 0.2};
+        double[] a = {1.0, -0.6};
+        double[] zi = Signal.lfilter_zi(b, a);   // steady-state initial conditions
+        double[] z0 = {zi[0] * signal[0]};       // scale by the first sample
+        LFilter.Result r = Signal.lfilter(b, a, signal, z0);
+        // r.y = filtered signal, r.zf = final state to continue with the next block
     }
 }
 ```

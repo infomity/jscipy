@@ -21,6 +21,7 @@ import com.hissain.jscipy.signal.fft.Spectrogram;
 import com.hissain.jscipy.signal.fft.Welch;
 import com.hissain.jscipy.signal.filter.SosFilt;
 import com.hissain.jscipy.signal.filter.FIR;
+import com.hissain.jscipy.signal.filter.LFilter;
 import com.hissain.jscipy.signal.fft.Periodogram;
 import com.hissain.jscipy.signal.fft.Spectrogram.SpectrogramResult;
 import com.hissain.jscipy.signal.Waveform;
@@ -61,6 +62,52 @@ public class Signal {
      */
     public static double[] lfilter(double[] signal, double sampleRate, double cutoff, int order) {
         return new Butterworth().filter(signal, sampleRate, cutoff, order);
+    }
+
+    /**
+     * Filters a signal with an IIR or FIR filter defined by its coefficients,
+     * starting from rest. Equivalent to {@code scipy.signal.lfilter(b, a, x)}.
+     * <p>
+     * Use this to apply the taps designed by {@link #firwin} (pass
+     * {@code a = {1.0}}), or any {@code (b, a)} pair from a filter design.
+     *
+     * @param b The numerator coefficient vector.
+     * @param a The denominator coefficient vector. If {@code a[0]} is not 1, both
+     *          {@code a} and {@code b} are normalized by {@code a[0]}.
+     * @param x The input signal.
+     * @return The filtered signal, same length as {@code x}.
+     */
+    public static double[] lfilter(double[] b, double[] a, double[] x) {
+        return LFilter.lfilter(b, a, x);
+    }
+
+    /**
+     * Filters a signal with an IIR or FIR filter defined by its coefficients,
+     * using initial conditions, and also returns the final filter state.
+     * Equivalent to {@code scipy.signal.lfilter(b, a, x, zi=zi)}.
+     *
+     * @param b  The numerator coefficient vector.
+     * @param a  The denominator coefficient vector.
+     * @param x  The input signal.
+     * @param zi Initial filter delay values of length
+     *           {@code max(len(a), len(b)) - 1}, or {@code null} for initial rest.
+     * @return A result holding the output {@code y} and final state {@code zf}.
+     */
+    public static LFilter.Result lfilter(double[] b, double[] a, double[] x, double[] zi) {
+        return LFilter.lfilter(b, a, x, zi);
+    }
+
+    /**
+     * Computes initial conditions for {@link #lfilter(double[], double[], double[], double[])}
+     * that correspond to the steady state of the step response.
+     * Equivalent to {@code scipy.signal.lfilter_zi(b, a)}.
+     *
+     * @param b The numerator coefficient vector.
+     * @param a The denominator coefficient vector.
+     * @return The initial state of length {@code max(len(a), len(b)) - 1}.
+     */
+    public static double[] lfilter_zi(double[] b, double[] a) {
+        return LFilter.lfilter_zi(b, a);
     }
 
     /**
