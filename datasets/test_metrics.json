@@ -90,3 +90,244 @@
 {"module": "Waveform", "test": "chirp_linear", "rmse": 1.361156e-17}
 {"module": "Waveform", "test": "square_duty025", "rmse": 0.000000e+00}
 {"module": "Waveform", "test": "square_duty075", "rmse": 0.000000e+00}
+{"module": "Spectral", "test": "Periodogram PSD", "rmse": 7.651604e-17}
+{"module": "2D Ops", "test": "FFT2 Real", "rmse": 4.384254e-17}
+{"module": "2D Ops", "test": "FFT2 Imag", "rmse": 5.674429e-17}
+{"module": "2D Ops", "test": "FFT2 Real", "rmse": 3.288772e-16}
+{"module": "2D Ops", "test": "FFT2 Imag", "rmse": 3.381171e-16}
+{"module": "Math", "test": "Interpolation Quadratic (Test 1)", "rmse": 1.089207e-16}
+{"module": "Math", "test": "Interpolation Quadratic (Test 2)", "rmse": 9.978506e-17}
+{"module": "Math", "test": "Interpolation Cubic (Test 1)", "rmse": 1.679155e-16}
+{"module": "Math", "test": "Interpolation Cubic (Test 2)", "rmse": 8.310032e-17}
+{"module": "Math", "test": "Interpolation Linear (Test 1)", "rmse": 7.021667e-17}
+{"module": "Math", "test": "Interpolation Linear (Test 2)", "rmse": 4.496917e-17}
+{"module": "Math", "test": "Interpolation BSpline k=3 (Test 1)", "rmse": 2.630198e-16}
+{"module": "Math", "test": "Interpolation BSpline k=3 (Test 2)", "rmse": 1.702647e-16}
+{"module": "Poly", "test": "Polyfit Exact", "rmse": 2.479222e-15}
+{"module": "Poly", "test": "Polyfit Lstsq", "rmse": 1.070954e-15}
+{"module": "Math", "test": "Resample 50", "rmse": 2.324436e-16}
+{"module": "Math", "test": "Resample 30", "rmse": 2.157129e-16}
+{"module": "Filters", "test": "Bessel (Total)", "rmse": 1.408004e-14}
+{"module": "Filters", "test": "Bessel (Center 50%)", "rmse": 1.293923e-14}
+{"module": "Filters", "test": "Butterworth butterworth_multitone_o4_input.txt", "rmse": 3.577685e-15}
+{"module": "Filters", "test": "Butterworth butterworth_impulse_o4_input.txt", "rmse": 1.637920e-16}
+{"module": "Filters", "test": "Butterworth butterworth_chirp_o4_input.txt", "rmse": 2.020504e-15}
+{"module": "Filters", "test": "Butterworth butterworth_simple_o2_input.txt", "rmse": 2.893967e-16}
+{"module": "Filters", "test": "Butterworth butterworth_simple_o4_input.txt", "rmse": 3.796234e-15}
+{"module": "Filters", "test": "Chebyshev I cheby1_input1.txt", "rmse": 4.755859e-14}
+{"module": "Filters", "test": "Chebyshev II cheby2_input1.txt", "rmse": 7.424198e-15}
+{"module": "2D Ops", "test": "Convolve2d Random Full", "rmse": 6.924718e-17}
+{"module": "2D Ops", "test": "Correlate2d Basic Valid", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Different Sizes Same", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Basic Full", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Basic Same", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Random Full", "rmse": 0.000000e+00}
+{"module": "Filters", "test": "Elliptic ellip_input1.txt", "rmse": 1.340063e-14}
+{"module": "Signal", "test": "PeakProminence_MultiPeak", "rmse": 0.000000e+00}
+{"module": "Signal", "test": "PeakWidths_MultiPeak_0.5", "rmse": 0.000000e+00}
+{"module": "Signal", "test": "PeakWidths_MultiPeak_1.0", "rmse": 3.335304e-13}
+{"module": "Signal", "test": "PeakProminence_Chirp", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "unit_impulse_idx25", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "gausspulse_fc500_bw03", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "chirp_hyperbolic", "rmse": 3.147536e-17}
+{"module": "Waveform", "test": "gausspulse_fc1000_bw05", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "sawtooth_width05", "rmse": 1.974486e-16}
+{"module": "Waveform", "test": "square_duty05", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "sawtooth_width0", "rmse": 9.855184e-17}
+{"module": "Waveform", "test": "sawtooth_width1", "rmse": 1.027581e-16}
+{"module": "Waveform", "test": "chirp_logarithmic", "rmse": 1.713218e-17}
+{"module": "Waveform", "test": "unit_impulse_mid", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "unit_impulse_idx0", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "chirp_quadratic", "rmse": 6.120827e-15}
+{"module": "Waveform", "test": "chirp_linear", "rmse": 1.361156e-17}
+{"module": "Waveform", "test": "square_duty025", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "square_duty075", "rmse": 0.000000e+00}
+{"module": "DCT", "test": "DCT Random Even", "rmse": 3.044846e-15}
+{"module": "DCT", "test": "DCT Basic", "rmse": 7.374840e-16}
+{"module": "DCT", "test": "DCT Ortho", "rmse": 1.882794e-16}
+{"module": "2D Ops", "test": "FFT2 Real", "rmse": 2.185683e-17}
+{"module": "2D Ops", "test": "FFT2 Imag", "rmse": 1.972811e-17}
+{"module": "2D Ops", "test": "FFT2 Real", "rmse": 2.513374e-16}
+{"module": "2D Ops", "test": "FFT2 Imag", "rmse": 1.492104e-16}
+{"module": "Spectral", "test": "Periodogram PSD", "rmse": 5.264379e-18}
+{"module": "Spectral", "test": "Spectrogram spectrogram_sine", "rmse": 2.673362e-18}
+{"module": "Spectral", "test": "Spectrogram spectrogram_chirp", "rmse": 1.503393e-18}
+{"module": "Spectral", "test": "Welch PSD", "rmse": 5.266770e-18}
+{"module": "Filters", "test": "BandStop Transform Coverage", "rmse": 4.464334e-14}
+{"module": "Filters", "test": "BandPass Transform Coverage", "rmse": 5.641306e-15}
+{"module": "Filters", "test": "HighPass Transform Coverage", "rmse": 2.758317e-16}
+{"module": "SOS Filt", "test": "SOS Filter", "rmse": 3.224566e-16}
+{"module": "Math", "test": "Interpolation Quadratic (Test 1)", "rmse": 1.089207e-16}
+{"module": "Math", "test": "Interpolation Quadratic (Test 2)", "rmse": 9.978506e-17}
+{"module": "Math", "test": "Interpolation Cubic (Test 1)", "rmse": 1.679155e-16}
+{"module": "Math", "test": "Interpolation Cubic (Test 2)", "rmse": 8.310032e-17}
+{"module": "Math", "test": "Interpolation Linear (Test 1)", "rmse": 7.021667e-17}
+{"module": "Math", "test": "Interpolation Linear (Test 2)", "rmse": 4.496917e-17}
+{"module": "Math", "test": "Interpolation BSpline k=3 (Test 1)", "rmse": 2.630198e-16}
+{"module": "Math", "test": "Interpolation BSpline k=3 (Test 2)", "rmse": 1.702647e-16}
+{"module": "Poly", "test": "Polyfit Exact", "rmse": 2.479222e-15}
+{"module": "Poly", "test": "Polyfit Lstsq", "rmse": 1.070954e-15}
+{"module": "Math", "test": "Resample 50", "rmse": 2.324436e-16}
+{"module": "Math", "test": "Resample 30", "rmse": 2.157129e-16}
+{"module": "Filters", "test": "Bessel (Total)", "rmse": 1.408004e-14}
+{"module": "Filters", "test": "Bessel (Center 50%)", "rmse": 1.293923e-14}
+{"module": "Filters", "test": "Butterworth butterworth_multitone_o4_input.txt", "rmse": 3.577685e-15}
+{"module": "Filters", "test": "Butterworth butterworth_impulse_o4_input.txt", "rmse": 1.637920e-16}
+{"module": "Filters", "test": "Butterworth butterworth_chirp_o4_input.txt", "rmse": 2.020504e-15}
+{"module": "Filters", "test": "Butterworth butterworth_simple_o2_input.txt", "rmse": 2.893967e-16}
+{"module": "Filters", "test": "Butterworth butterworth_simple_o4_input.txt", "rmse": 3.796234e-15}
+{"module": "Filters", "test": "Chebyshev I cheby1_input1.txt", "rmse": 4.755859e-14}
+{"module": "Filters", "test": "Chebyshev II cheby2_input1.txt", "rmse": 7.424198e-15}
+{"module": "2D Ops", "test": "Convolve2d Random Full", "rmse": 6.924718e-17}
+{"module": "2D Ops", "test": "Correlate2d Basic Valid", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Different Sizes Same", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Basic Full", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Basic Same", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Random Full", "rmse": 0.000000e+00}
+{"module": "Filters", "test": "Elliptic ellip_input1.txt", "rmse": 1.340063e-14}
+{"module": "Signal", "test": "PeakProminence_MultiPeak", "rmse": 0.000000e+00}
+{"module": "Signal", "test": "PeakWidths_MultiPeak_0.5", "rmse": 0.000000e+00}
+{"module": "Signal", "test": "PeakWidths_MultiPeak_1.0", "rmse": 3.335304e-13}
+{"module": "Signal", "test": "PeakProminence_Chirp", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "unit_impulse_idx25", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "gausspulse_fc500_bw03", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "chirp_hyperbolic", "rmse": 3.147536e-17}
+{"module": "Waveform", "test": "gausspulse_fc1000_bw05", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "sawtooth_width05", "rmse": 1.974486e-16}
+{"module": "Waveform", "test": "square_duty05", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "sawtooth_width0", "rmse": 9.855184e-17}
+{"module": "Waveform", "test": "sawtooth_width1", "rmse": 1.027581e-16}
+{"module": "Waveform", "test": "chirp_logarithmic", "rmse": 1.713218e-17}
+{"module": "Waveform", "test": "unit_impulse_mid", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "unit_impulse_idx0", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "chirp_quadratic", "rmse": 6.120827e-15}
+{"module": "Waveform", "test": "chirp_linear", "rmse": 1.361156e-17}
+{"module": "Waveform", "test": "square_duty025", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "square_duty075", "rmse": 0.000000e+00}
+{"module": "DCT", "test": "DCT Random Even", "rmse": 3.044846e-15}
+{"module": "DCT", "test": "DCT Basic", "rmse": 7.374840e-16}
+{"module": "DCT", "test": "DCT Ortho", "rmse": 1.882794e-16}
+{"module": "2D Ops", "test": "FFT2 Real", "rmse": 2.185683e-17}
+{"module": "2D Ops", "test": "FFT2 Imag", "rmse": 1.972811e-17}
+{"module": "2D Ops", "test": "FFT2 Real", "rmse": 2.513374e-16}
+{"module": "2D Ops", "test": "FFT2 Imag", "rmse": 1.492104e-16}
+{"module": "FFT", "test": "FFT_Power-of-2 (64)", "rmse": 7.869721e-16}
+{"module": "FFT", "test": "RFFT_Power-of-2 (64)", "rmse": 7.749565e-16}
+{"module": "FFT", "test": "IFFT_Power-of-2 (64)", "rmse": 2.114127e-16}
+{"module": "FFT", "test": "IRFFT_Power-of-2 (64)", "rmse": 1.633642e-16}
+{"module": "FFT", "test": "FFT_Power-of-2 (128)", "rmse": 1.561887e-15}
+{"module": "FFT", "test": "RFFT_Power-of-2 (128)", "rmse": 1.549825e-15}
+{"module": "FFT", "test": "IFFT_Power-of-2 (128)", "rmse": 2.537765e-16}
+{"module": "FFT", "test": "IRFFT_Power-of-2 (128)", "rmse": 2.658058e-16}
+{"module": "FFT", "test": "FFT_Composite Non-Power-of-2 (100)", "rmse": 1.432790e-15}
+{"module": "FFT", "test": "RFFT_Composite Non-Power-of-2 (100)", "rmse": 1.418674e-15}
+{"module": "FFT", "test": "IFFT_Composite Non-Power-of-2 (100)", "rmse": 2.029281e-16}
+{"module": "FFT", "test": "IRFFT_Composite Non-Power-of-2 (100)", "rmse": 1.979370e-16}
+{"module": "FFT", "test": "FFT_Prime Non-Power-of-2 (97)", "rmse": 1.012029e-13}
+{"module": "FFT", "test": "RFFT_Prime Non-Power-of-2 (97)", "rmse": 1.006852e-13}
+{"module": "FFT", "test": "IFFT_Prime Non-Power-of-2 (97)", "rmse": 1.038277e-14}
+{"module": "Spectral", "test": "Periodogram PSD", "rmse": 5.264379e-18}
+{"module": "Spectral", "test": "Spectrogram spectrogram_sine", "rmse": 2.673362e-18}
+{"module": "Spectral", "test": "Spectrogram spectrogram_chirp", "rmse": 1.503393e-18}
+{"module": "Spectral", "test": "Welch PSD", "rmse": 5.266770e-18}
+{"module": "Filters", "test": "BandStop Transform Coverage", "rmse": 4.464334e-14}
+{"module": "Filters", "test": "BandPass Transform Coverage", "rmse": 5.641306e-15}
+{"module": "Filters", "test": "HighPass Transform Coverage", "rmse": 2.758317e-16}
+{"module": "SOS Filt", "test": "SOS Filter", "rmse": 3.224566e-16}
+{"module": "FFT", "test": "FFT_Power-of-2 (64)", "rmse": 7.869721e-16}
+{"module": "FFT", "test": "RFFT_Power-of-2 (64)", "rmse": 7.749565e-16}
+{"module": "FFT", "test": "IFFT_Power-of-2 (64)", "rmse": 2.114127e-16}
+{"module": "FFT", "test": "IRFFT_Power-of-2 (64)", "rmse": 1.633642e-16}
+{"module": "FFT", "test": "FFT_Power-of-2 (128)", "rmse": 1.561887e-15}
+{"module": "FFT", "test": "RFFT_Power-of-2 (128)", "rmse": 1.549825e-15}
+{"module": "FFT", "test": "IFFT_Power-of-2 (128)", "rmse": 2.537765e-16}
+{"module": "FFT", "test": "IRFFT_Power-of-2 (128)", "rmse": 2.658058e-16}
+{"module": "FFT", "test": "FFT_Composite Non-Power-of-2 (100)", "rmse": 1.432790e-15}
+{"module": "FFT", "test": "RFFT_Composite Non-Power-of-2 (100)", "rmse": 1.418674e-15}
+{"module": "FFT", "test": "IFFT_Composite Non-Power-of-2 (100)", "rmse": 2.029281e-16}
+{"module": "FFT", "test": "IRFFT_Composite Non-Power-of-2 (100)", "rmse": 1.979370e-16}
+{"module": "FFT", "test": "FFT_Prime Non-Power-of-2 (97)", "rmse": 1.012029e-13}
+{"module": "FFT", "test": "RFFT_Prime Non-Power-of-2 (97)", "rmse": 1.006852e-13}
+{"module": "FFT", "test": "IFFT_Prime Non-Power-of-2 (97)", "rmse": 1.038277e-14}
+{"module": "FFT", "test": "FFT_Power-of-2 (64)", "rmse": 7.869721e-16}
+{"module": "FFT", "test": "RFFT_Power-of-2 (64)", "rmse": 7.749565e-16}
+{"module": "FFT", "test": "IFFT_Power-of-2 (64)", "rmse": 2.114127e-16}
+{"module": "FFT", "test": "IRFFT_Power-of-2 (64)", "rmse": 1.633642e-16}
+{"module": "FFT", "test": "FFT_Power-of-2 (128)", "rmse": 1.561887e-15}
+{"module": "FFT", "test": "RFFT_Power-of-2 (128)", "rmse": 1.549825e-15}
+{"module": "FFT", "test": "IFFT_Power-of-2 (128)", "rmse": 2.537765e-16}
+{"module": "FFT", "test": "IRFFT_Power-of-2 (128)", "rmse": 2.658058e-16}
+{"module": "FFT", "test": "FFT_Composite Non-Power-of-2 (100)", "rmse": 1.432790e-15}
+{"module": "FFT", "test": "RFFT_Composite Non-Power-of-2 (100)", "rmse": 1.418674e-15}
+{"module": "FFT", "test": "IFFT_Composite Non-Power-of-2 (100)", "rmse": 2.029281e-16}
+{"module": "FFT", "test": "IRFFT_Composite Non-Power-of-2 (100)", "rmse": 1.979370e-16}
+{"module": "FFT", "test": "FFT_Prime Non-Power-of-2 (97)", "rmse": 1.012029e-13}
+{"module": "FFT", "test": "RFFT_Prime Non-Power-of-2 (97)", "rmse": 1.006852e-13}
+{"module": "FFT", "test": "IFFT_Prime Non-Power-of-2 (97)", "rmse": 1.038277e-14}
+{"module": "FFT", "test": "IRFFT_Prime Non-Power-of-2 (97)", "rmse": 1.036015e-14}
+{"module": "FFT", "test": "FFT_Large Non-Power-of-2 (1000)", "rmse": 6.410770e-15}
+{"module": "FFT", "test": "RFFT_Large Non-Power-of-2 (1000)", "rmse": 6.404369e-15}
+{"module": "FFT", "test": "IFFT_Large Non-Power-of-2 (1000)", "rmse": 3.600259e-16}
+{"module": "FFT", "test": "IRFFT_Large Non-Power-of-2 (1000)", "rmse": 3.110124e-16}
+{"module": "Math", "test": "Interpolation Quadratic (Test 1)", "rmse": 1.089207e-16}
+{"module": "Math", "test": "Interpolation Quadratic (Test 2)", "rmse": 9.978506e-17}
+{"module": "Math", "test": "Interpolation Cubic (Test 1)", "rmse": 1.679155e-16}
+{"module": "Math", "test": "Interpolation Cubic (Test 2)", "rmse": 8.310032e-17}
+{"module": "Math", "test": "Interpolation Linear (Test 1)", "rmse": 7.021667e-17}
+{"module": "Math", "test": "Interpolation Linear (Test 2)", "rmse": 4.496917e-17}
+{"module": "Math", "test": "Interpolation BSpline k=3 (Test 1)", "rmse": 2.630198e-16}
+{"module": "Math", "test": "Interpolation BSpline k=3 (Test 2)", "rmse": 1.702647e-16}
+{"module": "Poly", "test": "Polyfit Exact", "rmse": 2.479222e-15}
+{"module": "Poly", "test": "Polyfit Lstsq", "rmse": 1.070954e-15}
+{"module": "Math", "test": "Resample 50", "rmse": 2.324436e-16}
+{"module": "Math", "test": "Resample 30", "rmse": 2.157129e-16}
+{"module": "Filters", "test": "Bessel (Total)", "rmse": 1.408004e-14}
+{"module": "Filters", "test": "Bessel (Center 50%)", "rmse": 1.293923e-14}
+{"module": "Filters", "test": "Butterworth butterworth_multitone_o4_input.txt", "rmse": 3.577685e-15}
+{"module": "Filters", "test": "Butterworth butterworth_impulse_o4_input.txt", "rmse": 1.637920e-16}
+{"module": "Filters", "test": "Butterworth butterworth_chirp_o4_input.txt", "rmse": 2.020504e-15}
+{"module": "Filters", "test": "Butterworth butterworth_simple_o2_input.txt", "rmse": 2.893967e-16}
+{"module": "Filters", "test": "Butterworth butterworth_simple_o4_input.txt", "rmse": 3.796234e-15}
+{"module": "Filters", "test": "Chebyshev I cheby1_input1.txt", "rmse": 4.755859e-14}
+{"module": "Filters", "test": "Chebyshev II cheby2_input1.txt", "rmse": 7.424198e-15}
+{"module": "2D Ops", "test": "Convolve2d Random Full", "rmse": 6.924718e-17}
+{"module": "2D Ops", "test": "Correlate2d Basic Valid", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Different Sizes Same", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Basic Full", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Basic Same", "rmse": 0.000000e+00}
+{"module": "2D Ops", "test": "Correlate2d Random Full", "rmse": 0.000000e+00}
+{"module": "Filters", "test": "Elliptic ellip_input1.txt", "rmse": 1.340063e-14}
+{"module": "Signal", "test": "PeakProminence_MultiPeak", "rmse": 0.000000e+00}
+{"module": "Signal", "test": "PeakWidths_MultiPeak_0.5", "rmse": 0.000000e+00}
+{"module": "Signal", "test": "PeakWidths_MultiPeak_1.0", "rmse": 3.335304e-13}
+{"module": "Signal", "test": "PeakProminence_Chirp", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "unit_impulse_idx25", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "gausspulse_fc500_bw03", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "chirp_hyperbolic", "rmse": 3.147536e-17}
+{"module": "Waveform", "test": "gausspulse_fc1000_bw05", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "sawtooth_width05", "rmse": 1.974486e-16}
+{"module": "Waveform", "test": "square_duty05", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "sawtooth_width0", "rmse": 9.855184e-17}
+{"module": "Waveform", "test": "sawtooth_width1", "rmse": 1.027581e-16}
+{"module": "Waveform", "test": "chirp_logarithmic", "rmse": 1.713218e-17}
+{"module": "Waveform", "test": "unit_impulse_mid", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "unit_impulse_idx0", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "chirp_quadratic", "rmse": 6.120827e-15}
+{"module": "Waveform", "test": "chirp_linear", "rmse": 1.361156e-17}
+{"module": "Waveform", "test": "square_duty025", "rmse": 0.000000e+00}
+{"module": "Waveform", "test": "square_duty075", "rmse": 0.000000e+00}
+{"module": "DCT", "test": "DCT Random Even", "rmse": 3.044846e-15}
+{"module": "DCT", "test": "DCT Basic", "rmse": 7.374840e-16}
+{"module": "DCT", "test": "DCT Ortho", "rmse": 1.882794e-16}
+{"module": "2D Ops", "test": "FFT2 Real", "rmse": 2.185683e-17}
+{"module": "2D Ops", "test": "FFT2 Imag", "rmse": 1.972811e-17}
+{"module": "2D Ops", "test": "FFT2 Real", "rmse": 2.513374e-16}
+{"module": "2D Ops", "test": "FFT2 Imag", "rmse": 1.492104e-16}
+{"module": "Spectral", "test": "Periodogram PSD", "rmse": 5.264379e-18}
+{"module": "Spectral", "test": "Spectrogram spectrogram_sine", "rmse": 2.673362e-18}
+{"module": "Spectral", "test": "Spectrogram spectrogram_chirp", "rmse": 1.503393e-18}
+{"module": "Spectral", "test": "Welch PSD", "rmse": 5.266770e-18}
+{"module": "Filters", "test": "BandStop Transform Coverage", "rmse": 4.464334e-14}
+{"module": "Filters", "test": "BandPass Transform Coverage", "rmse": 5.641306e-15}
+{"module": "Filters", "test": "HighPass Transform Coverage", "rmse": 2.758317e-16}
+{"module": "SOS Filt", "test": "SOS Filter", "rmse": 3.224566e-16}
